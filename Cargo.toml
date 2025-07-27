@@ -27,7 +27,7 @@ rune         = { version = "0.14", features = ["workspace", "tokio"] }
 rune-modules = { version = "0.14", features = ["full"] }
 serde        = { version = "1.0", features = ["derive"] }
 thiserror    = "2.0"
-tokio        = { version = "1.46", features = ["full"] }
+tokio        = { version = "1.47", features = ["full"] }
 tracing      = "0.1"
 uuid         = { version = "1.17", features = ["v4", "fast-rng"] }
 

@@ -277,7 +277,7 @@ fn chacha20_less_safe(key: &[u8], data: &[u8]) -> Vec<u8> {
 }
 
 #[derive(Debug, Clone)]
-pub struct FlagStego {
+pub struct LeetStego {
   pub key: String,
 }
 
@@ -287,7 +287,7 @@ pub struct UUIDStego {
   pub key: String,
 }
 
-impl FlagStego {
+impl LeetStego {
   /// Construct a FlagStego instance.
   ///
   /// ## Examples
@@ -477,7 +477,7 @@ mod tests {
 
   #[test]
   fn test_flag_transform() {
-    let flag_stego = FlagStego::new("f80f9a197163");
+    let flag_stego = LeetStego::new("f80f9a197163");
     let template = "yes_you_are_right_but_you_should_play_genshin_impact";
     println!("Template  : {template}");
     let data = 1919810;
@@ -537,7 +537,7 @@ pub fn module(_stdio: bool) -> Result<Module, ContextError> {
 /// ```
 #[rune::function]
 pub fn encode(template: &str, key: &str, id: i64) -> String {
-  let flag_stego = FlagStego::new(key);
+  let flag_stego = LeetStego::new(key);
   flag_stego.leet(template, id)
 }
 
@@ -556,7 +556,7 @@ pub fn encode(template: &str, key: &str, id: i64) -> String {
 /// ```
 #[rune::function]
 pub fn decode(template: &str, key: &str, flag: &str) -> Result<i64, io::Error> {
-  let flag_stego = FlagStego::new(key);
+  let flag_stego = LeetStego::new(key);
   flag_stego.unleet(template, flag)
 }
 
