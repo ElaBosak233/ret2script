@@ -1,7 +1,7 @@
 use std::{collections::HashMap, env::current_dir, path::Path, sync::Arc};
 
 use clap::Parser;
-use colored::Colorize;
+use owo_colors::OwoColorize;
 use ret2script::modules::bucket::Bucket;
 use rune::{
   runtime::Object,

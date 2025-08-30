@@ -22,8 +22,6 @@ pub fn module(_stdio: bool) -> Result<Module, ContextError> {
   module.function_meta(Rng::rand)?;
   module.function_meta(Rng::rand_int)?;
   module.function_meta(Rng::rand_bytes)?;
-  module.ty::<Uuid>()?;
-  module.function_meta(Uuid::new)?;
   module.ty::<Nanoid>()?;
   module.function_meta(Nanoid::new)?;
   module.ty::<Hash>()?;
@@ -108,21 +106,6 @@ impl Rng {
       .fill(&mut buffer)
       .map_err(|_| io::Error::other("generate random bytes failed"))?;
     Ok(buffer)
-  }
-}
-
-/// Uuid generator.
-///
-/// For legacy use only, please use nanoid for better experience.
-#[derive(Any, Debug)]
-#[rune(item = ::ret2api::crypto)]
-pub struct Uuid;
-
-impl Uuid {
-  /// get a new uuid v4 string.
-  #[rune::function(path = Self::new)]
-  pub fn new() -> String {
-    uuid::Uuid::new_v4().to_string()
   }
 }
 
