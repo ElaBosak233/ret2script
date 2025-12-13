@@ -132,7 +132,7 @@ pub fn upper(s: &str) -> String {
 #[rune::function]
 pub fn hex2bytes(s: &str) -> Result<Vec<u8>, io::Error> {
   let s = s.trim();
-  if s.len() % 2 != 0 {
+  if !s.len().is_multiple_of(2) {
     return Err(io::Error::other("hex string length must be even"));
   }
   (0..s.len())
